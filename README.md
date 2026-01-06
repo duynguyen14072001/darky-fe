@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+## 🧰 Tech Stack
+- [React](https://react.dev)
+- [Vite](https://vitejs.dev)
+- [TypeScript](https://www.typescriptlang.org)
+- [Ant Design](https://ant.design)
+- [TanStack Query React](https://tanstack.com/query/latest)
+- [Yarn](https://yarnpkg.com)
+- [Docker](https://www.docker.com) / [Docker Compose](https://docs.docker.com/compose/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🚀 Installation & Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Method 1: Using Docker
 
-## React Compiler
+- Make sure you have Docker and Docker Compose installed
+- Copy `.env.example` to `.env` and configure environment variables (if needed)
+- Build and start the container:
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker-compose -f docker-compose.local.yml up --build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- The application will run at `http://localhost:3001` (or the port configured in the `VITE_PORT` variable)
+- To stop the container: `docker-compose -f docker-compose.local.yml down`
+- To view logs: `docker-compose -f docker-compose.local.yml logs -f`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Method 2: Using Yarn (Local Development)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Make sure you have Node.js (version 20+) and Yarn installed
+- Copy `.env.example` to `.env` and configure environment variables (if needed)
+- Install dependencies:
+
+```bash
+yarn
 ```
+
+- Run the development server:
+
+```bash
+yarn dev
+```
+
+- The application will run at `http://localhost:3001` (or the port configured in the `VITE_PORT` variable)
+
+---
+
+## 📁 Structure Folder
+
+```bash
+.
+├── public/
+├── src/
+│   ├── assets/                 # Image, File
+│   ├── config/                 # Config commmon axios, tanstack
+│   ├── langs/                  # Multiple languages
+│   ├── modules/                # System modules
+│   ├── routes/                 # Routing
+│   ├── shared/                 # Common function, component, heplers, styles, hooks, ...
+│   ├── App.tsx
+│   └── main.tsx
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── docker-compose.local.yml
+├── Dockerfile.local
+├── eslint.config.js
+├── index.html
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── yarn.lock
