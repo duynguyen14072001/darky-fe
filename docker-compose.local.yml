@@ -1,0 +1,16 @@
+services:
+  darky-fe:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    container_name: darky-fe
+    ports:
+      - "${VITE_PORT:-3001}:${VITE_PORT:-3001}"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=local
+      - VITE_PORT=${VITE_PORT:-3001}
+
