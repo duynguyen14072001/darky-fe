@@ -13,4 +13,3 @@ services:
     environment:
       - NODE_ENV=local
       - VITE_PORT=${VITE_PORT:-3001}
-
