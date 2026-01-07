@@ -73,3 +73,63 @@ yarn dev
 ├── tsconfig.node.json
 ├── vite.config.ts
 └── yarn.lock
+```
+
+---
+
+## 🔀 Git Workflow & Conventions
+
+### Commit message convention
+
+Each commit message **must** start with one of the following prefixes:
+
+| **Type**   | **Meaning**                    |
+| ---------- | ------------------------------ |
+| `feat`     | New feature                    |
+| `fix`      | Bug fix                        |
+| `refactor` | Refactor without behavior change |
+| `docs`     | Documentation                  |
+| `test`     | Tests                          |
+| `chore`    | Config, build, tooling         |
+| `style`    | Formatting, lint (no logic change) |
+| `perf`     | Performance improvements       |
+| `ci`       | CI/CD                          |
+
+**Recommended format (similar to Conventional Commits):**
+
+```bash
+<type>: <short description>
+
+# Examples:
+feat: add login page
+fix: handle invalid credentials
+docs: update README for setup guide
+```
+
+### Branch naming convention
+
+Create new branches using the format: `type/short-description`, where `type` is one of:
+
+| **Type**   | **When to use**               |
+| ---------- | ----------------------------- |
+| `feature`  | Developing a new feature      |
+| `bugfix`   | Fixing a bug                  |
+| `hotfix`   | Urgent fix on production      |
+| `release`  | Preparing a release           |
+| `chore`    | Chores (config, tooling, etc.)|
+| `refactor` | Refactoring code              |
+| `test`     | Writing/updating tests        |
+| `docs`     | Documentation                 |
+
+**Examples:**
+
+- `feature/auth-login`
+- `bugfix/fix-login-redirect`
+- `hotfix/payment-timeout`
+- `docs/update-readme`
+
+### Pull request rules
+
+- Each **pull request must contain exactly 1 commit** (CI will fail if there is more than 1).
+- The commit in the PR **must** follow the commit message convention above.
+- The branch name must follow the **branch naming convention**.
